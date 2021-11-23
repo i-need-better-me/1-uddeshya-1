@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <link rel="stylesheet" href="site.css" type="text/css" />
+    <link rel="icon" href="images/logo.jpeg" type="image/jpeg" />
+    <title>Shop | Avantika's Bakery</title>
+    <style>
+      button{
+        cursor: pointer;
+      }
+
+      h1 {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 40px;
+        margin-bottom: 30px;
+      }
+    </style>       
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="image.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li> 
+      </ul>
+  </nav>
+ </header>
+ <div class="penguin">
+  <div class="penguin-bottom">
+    <div class="right-hand"></div>
+    <div class="left-hand"></div>
+    <div class="right-feet"></div>
+    <div class="left-feet"></div>
+  </div>
+  <div class="penguin-top">
+    <div class="right-cheek"></div>
+    <div class="left-cheek"></div>
+    <div class="belly"></div>
+    <div class="right-eye">
+      <div class="sparkle"></div>
+    </div>
+    <div class="left-eye">
+      <div class="sparkle"></div>
+    </div>
+    <div class="blush-right"></div>
+    <div class="blush-left"></div>
+    <div class="beak-top"></div>
+    <div class="beak-bottom"></div>
+  </div>
+</div>
+ <main> 
+   <aside class="pie"><img src="images/logo.jpeg" alt="Avantika'S Bakery"/></aside>
+   <article>
+      <h1>ORDER HERE</h1> 
+      <section class="columns-desktop">
+        <div class="pie">
+           <img src="images/cup cakes.jpg" alt="Cup Cakes" /> 
+           <div class="columns">
+             <div class="title">Cup Cake</div>
+             <div class="price">Rs.119</div>  
+           </div>   
+           <p class="desc">Our famous delicious cup cakes</p>
+           <button data-order="cup-cake">ORDER</button>
+        </div>
+        <div class="pie">
+            <img src="images/9.jpg" alt="Cakes" /> 
+            <div class="columns">
+              <div class="title">Cake</div>
+              <div class="price">Rs.549</div>  
+            </div>   
+            <p class="desc">A premium choice</p>
+            <button data-order="cake">ORDER</button>
+        </div><br/>
+        <div class="pie">
+            <img src="images/lasagna.jpg" alt="Lasagna" /> 
+            <div class="columns">
+              <div class="title">Lasagna</div>
+              <div class="price">Rs.299</div>  
+            </div>   
+            <p class="desc">Elite in taste</p>
+            <button data-order="lasagna">ORDER</button>
+        </div>
+        <div class="pie">
+            <img src="images/12.jpg" alt="Doughnuts" /> 
+            <div class="columns">
+              <div class="title">Doughnuts</div>
+              <div class="price">Rs.89</div>  
+            </div>   
+            <p class="desc">You have to taste this</p>
+            <button data-order="doughnut">ORDER</button>
+        </div>
+        <div class="pie">
+            <img src="images/10.jpg" alt="Pizza" /> 
+            <div class="columns">
+              <div class="title">Pizza</div>
+              <div class="price">Rs.349</div>  
+            </div>   
+            <p class="desc">One of our best foods</p>
+            <button data-order="pizza">ORDER</button>
+        </div>   
+      </section>
+   </article>  
+ </main>
+ <footer>
+     <nav>
+         <ul>
+             <li><a href="/"></a>Home</li>
+             <li><a href="shop.html">Shop</a></li>
+             <li><a href="image.html">Gallery</a></li>
+             <li><a href="contact.html">Contact</a></li>
+         </ul>
+     </nav>
+ </footer>
+</body>
+<script>
+  window.addEventListener("DOMContentLoaded", function(e) {
+    const orderButtons = document.querySelectorAll("button[data-order]");
+
+    orderButtons.forEach(function(button) {
+
+      button.addEventListener("click", function(e) {
+        const button = e.currentTarget;
+        const container = button.parentNode;
+
+        const order = {
+          id: button.getAttribute("data-order"),
+          title: container.querySelector(".title").innerText,
+          price: container.querySelector(".price").innerText,
+          desc: container.querySelector(".desc").innerText
+        }; 
+
+        localStorage.setItem("order", JSON.stringify(order));
+
+        const url = window.location.href.replace("shop.html", "order.html");
+        window.location.href = url;
+      });
+    });
+  });
+</script>
+</html>
